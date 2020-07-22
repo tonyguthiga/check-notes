@@ -1,14 +1,30 @@
-from flask_login import login_required
+from flask_login import login_required,current_user
 from . import main
 from flask import render_template,url_for,request,redirect,abort
-from ..models import User
+from ..models import User,Category,Note
 from .. import db
-from .forms import UpdateProfile
+from .forms import UpdateProfile,NoteForm
 
 @main.route('/')
 def index():
     title = 'Home - Welcome'
     return render_template('index.html', title=title)
+
+@main.route('/add',methods =['GET','POST'])
+@login_required
+def add_note():
+    form = NoteForm()
+
+    if form.validate_on_submit():
+        note = Note(title = form.title.data, note = form.pitch.data,user=current_user)
+        
+        db.session.add(note)
+        db.session.commit()
+
+        return redirect(url_for('main.profile'))
+         
+    return render_template('add.html',note_form=form)
+
 
 @main.route('/categories/<int:id>')
 def categories(id):
@@ -21,11 +37,12 @@ def categories(id):
 @main.route('/user/<uname>')
 def profile(uname):
     user = User.query.filter_by(username = uname).first()
+    notes = Note.query.order_by(Note.time.desc()).all()
 
     if user is None:
         abort(404)
 
-    return render_template("profile/profile.html", user = user)
+    return render_template("profile/profile.html", user = user,notes=notes)
 
 @main.route('/user/<uname>/update', methods=['GET', 'POST'])
 @login_required
