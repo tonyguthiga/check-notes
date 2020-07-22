@@ -1,7 +1,5 @@
-from flask import render_template,request,redirect,url_for,abort
-from ..models import Reviews, User
-from .forms import ReviewForm,UpdateProfile
-from .. import db
+
+from .forms import UpdateProfile
 #.....
 @main.route('/user/<uname>')
 def profile(uname):
@@ -20,4 +18,24 @@ def profile(uname):
 
         return redirect(url_for('.profile',uname=user.username))
     return render_template("profile/profile.html", form = form)
+
+
+from flask_login import login_required
+from . import main
+from flask import render_template,url_for,request,redirect,abort
+from ..models import User
+from .. import db
+
+@main.route('/')
+def index():
+    title = 'Home - Welcome'
+    return render_template('index.html', title=title)
+
+@main.route('/categories/<int:id>')
+def categories(id):
+    category = Category.query.get(id)
+    if category is None:
+        abort(404)
+
+    return render_template('category.html', category=category)
 

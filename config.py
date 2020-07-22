@@ -4,7 +4,8 @@ class Config:
     '''
     General configuration parent class
     '''
-    pass
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moring:Access@localhost/notes'
+    SECRET_KEY = '\x1a\x8a\xd7:c"\xe0\x84\xc8\xad\x115'
 
 class ProdConfig(Config):
     '''
