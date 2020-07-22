@@ -8,5 +8,5 @@ class UpdateProfile(FlaskForm):
     submit = SubmitField('Submit')
 
 class CategoryForm(FlaskForm):
-    name = StringFiled('Category Name', validators=[Required()])
+    name = StringField('Category Name', validators=[Required()])
     submit = SubmitField('Submit')
