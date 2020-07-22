@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
+{% block content %}
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 create-group">{{ wtf.quick_form(category_form) }}</div>
+<div class="col-md-10-offset-1 col-sm-12">
+    <h3 class="text-center">{{ category.name|upper }}</h3>
+</div>
+{% endblock %}
