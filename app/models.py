@@ -1,6 +1,7 @@
 from flask_login import UserMixin
 from . import db, login_manager
 from werkzeug.security import generate_password_hash,check_password_hash
+from datetime import datetime
 
 
 @login_manager.user_loader
@@ -48,4 +49,17 @@ class Category(db.Model):
     def get_categories(cls):
         categories = Category.query.all()
         return categories
+
+class Note(db.Model):
+    __tablename__='notes'
+
+    id = db.Column(db.Integer,primary_key = True)
+    title = db.Column(db.String)
+    content = db.Column(db.String)
+    time = db.Column(db.DateTime,default=datetime.utcnow)
+    
+    
+    def __repr__(self):
+        return f'User {self.title}'
+
 
