@@ -92,3 +92,22 @@ def update_profile(uname):
 
         return redirect(url_for('.profile',uname=user.username))
     return render_template("profile/update.html", form = form)
+
+@main.route('/category/new-note/<int:id>/update', methods=['GET', 'POST'])
+@login_required
+def edit(id):
+    note = Note.query.get_or_404(id) 
+    category = Category.query.filter_by(id=id).first()
+
+    form = NoteForm()
+
+    if form.validate_on_submit():
+        note.title = form.title.data
+        note.content = form.content.data
+        db.session.commit()
+        flash('The note has been updated.', 'success')
+        return redirect(url_for('.categories',id=category.id))
+    elif request.method == 'GET':
+        form.title.data = note.title
+        form.content.data = note.content
+    return render_template('new_note.html', note_form=form, category=category)
