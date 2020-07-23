@@ -3,3 +3,10 @@
 <li><a href="{{url_for('.category',id=category.id)}}">{{category.name|upper}}</a></li>
 {% endfor %}
 {% endmacro %}
+
+{% macro displayNotes(note_list) %}
+{% for notes in note_list %}
+<p>{{notes.name|upper}}</p>
+<h3>{{notes.content}}</h3>
+{% endfor %}
+{% endmacro %}

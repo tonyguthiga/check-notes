@@ -54,10 +54,23 @@ class Note(db.Model):
     __tablename__='notes'
 
     id = db.Column(db.Integer,primary_key = True)
-    title = db.Column(db.String)
-    content = db.Column(db.String)
+    title = db.Column(db.String())
+    content = db.Column(db.String())
     time = db.Column(db.DateTime,default=datetime.utcnow)
-    
+    category_id = db.Column(db.Integer, db.ForeignKey("categories.id"))
+
+    def save_note(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def clear_notes(cls):
+        Note.all_notes.clear()
+
+    @classmethod
+    def get_notes(cls, id):
+        notes = Note.query.filter_by(category_id=id).all()
+        return notes
     
     def __repr__(self):
         return f'User {self.title}'
