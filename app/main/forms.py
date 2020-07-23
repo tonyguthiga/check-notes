@@ -3,8 +3,8 @@ from wtforms import StringField,TextAreaField,SubmitField
 from wtforms.validators import Required
 
 class NoteForm(FlaskForm):
-    title = StringField('Pitch title',validators=[Required()])
-    pitch = TextAreaField('Pitch')
+    title = StringField('Note title',validators=[Required()])
+    content = TextAreaField('Note')
     submit = SubmitField('Submit')
 
 class UpdateProfile(FlaskForm):
