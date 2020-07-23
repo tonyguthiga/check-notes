@@ -1,6 +1,6 @@
 from flask_login import login_required,current_user
 from . import main
-from flask import render_template,url_for,request,redirect,abort
+from flask import render_template,url_for,request,redirect,abort,flash
 from ..models import User,Category,Note
 from .. import db
 from .forms import UpdateProfile,NoteForm,CategoryForm

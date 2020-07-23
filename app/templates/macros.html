@@ -10,6 +10,7 @@
  <h2>{{ note.title }}</h2> 
  <p>{{ note.content }}</p>
  <p>({{ note.time.strftime('%B-%d-%y/%H:%m') }})</p>
+ <a href="/category/new-note/{{note.id}}/update"><span class="label label-primary">Edit</span> </a>
 </div>
 <hr>
 
