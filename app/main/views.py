@@ -39,22 +39,6 @@ def view_note(id):
 
     return render_template('view_note.html', notes=notes, category_id=id, categories=all_category)
 
-# @main.route('/add',methods =['GET','POST'])
-# @login_required
-# def add_note():
-#     form = NoteForm()
-
-#     if form.validate_on_submit():
-#         note = Note(title = form.title.data, note = form.pitch.data,user=current_user)
-        
-#         db.session.add(note)
-#         db.session.commit()
-
-    #     return redirect(url_for('main.profile',id=category.id))
-         
-    # return render_template('add.html',note_form=form,category=category)
-
-
 @main.route('/categories/<int:id>')
 def categories(id):
     category = Category.query.get(id)
@@ -77,7 +61,7 @@ def new_category(uname):
 
         return redirect(url_for('.profile',uname=user.username))
     title = 'New Category'
-    return render_template('new_category.html', category_form = form, title = title)
+    return render_template('new_category.html', category_form = form, title = title, user=user)
 
 @main.route('/user/<uname>')
 def profile(uname):
