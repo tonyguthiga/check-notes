@@ -24,7 +24,7 @@ def new_note(id):
 
     if form.validate_on_submit():
         content = form.content.data
-        new_note = Note(content=content, category_id = category.id)
+        new_note = Note(title = form.title.data, content=content, category_id = category.id)
         new_note.save_note()
         return redirect(url_for('.category', id=category.id))
 
@@ -52,9 +52,9 @@ def view_note(id):
 #         db.session.add(note)
 #         db.session.commit()
 
-#         return redirect(url_for('main.profile'))
+    #     return redirect(url_for('main.profile',id=category.id))
          
-#     return render_template('add.html',note_form=form)
+    # return render_template('add.html',note_form=form,category=category)
 
 
 @main.route('/categories/<int:id>')
@@ -64,6 +64,7 @@ def categories(id):
         abort(404)
 
     notes = Note.get_notes(id)
+    # notes = Note.query.order_by(Note.time.desc()).all()
     return render_template('category.html', notes=notes, category=category)
 
 @main.route('/add/category', methods=['GET', 'POST'])
@@ -83,11 +84,12 @@ def new_category():
 def profile(uname):
     user = User.query.filter_by(username = uname).first()
     notes = Note.query.order_by(Note.time.desc()).all()
+    categories = Category.get_categories()
 
     if user is None:
         abort(404)
 
-    return render_template("profile/profile.html", user = user,notes=notes)
+    return render_template("profile/profile.html", user = user,notes=notes,categories=categories)
 
 @main.route('/user/<uname>/update', methods=['GET', 'POST'])
 @login_required

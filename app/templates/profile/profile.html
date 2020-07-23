@@ -19,29 +19,25 @@
     <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
     {% endif %}
   </div>
-  <!-- <div class="col-md-6">
-    {% for note in notes %}
-    <div class="container">
-      <h2>{{ note.title }}</h2> 
-      <p>{{ note.content }}</p>
-      <p>({{ note.time.strftime('%B-%d-%y /%H:%m') }})</p>
-      <a href="{{url_for('main.pitch', id = pitch.id)}}" class=" btn btn-primary">Edit</a> 
-    </div>
-    <hr>
-    {% endfor %}
-  </div> -->
-  {% macro displayPitches(note_list) %}
-  {% for note in notes_list %}
-  <div class="container">
-  <h2>{{ note.title }}</h2> 
-  <p>{{ note.content }}</p>
-  <p>({{ note.time.strftime('%B-%d-%y/%H:%m') }})</p>
-  <!-- <a href="{{url_for('main.pitch', id = pitch.id)}}" class=" btn btn-primary">Edit</a> -->
   </div>
-  <hr>
-  
-  {% endfor %}
-  {% endmacro %} 
+  <div class="container">
+    <div class="text-align-center text-center">
+        <div>
+            <h4>
+                <a class="btn btn-primary" href="/add/category">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Note</a>
+            </h4>
+            <ol class="category-list list-inline-item">
+                {{macro.displayCategorylist(categories)}}
+            </ol>
+            <div>
+              <h2>All Pitches</h2>
+              {{macro.displayAllNotes(notes)}}
+            </div>
+        </div>
+
+    </div>
+</div>
 </div>
 </div>
 {% endblock %}

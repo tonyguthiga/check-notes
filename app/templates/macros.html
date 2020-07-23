@@ -5,8 +5,14 @@
 {% endmacro %}
 
 {% macro displayNotes(note_list) %}
-{% for notes in note_list %}
-<p>{{notes.name|upper}}</p>
-<h3>{{notes.content}}</h3>
+{% for note in notes_list %}
+<div class="container">
+ <h2>{{ note.title }}</h2> 
+ <p>{{ note.content }}</p>
+ <p>({{ note.time.strftime('%B-%d-%y/%H:%m') }})</p>
+ <!-- <a href="{{url_for('main.pitch', id = pitch.id)}}" class=" btn btn-primary">Edit</a>  -->
+</div>
+<hr>
+
 {% endfor %}
 {% endmacro %}
