@@ -9,9 +9,7 @@ from .forms import UpdateProfile,NoteForm,CategoryForm
 @main.route('/')
 def index():
     title = 'Home - Welcome'
-    all_category = Category.get_categories()
-    all_notes = Note.query.order_by('id').all()
-    return render_template('index.html', title=title, categories=all_category,all_notes=all_notes)
+    return render_template('index.html', title=title)
 
 @main.route('/category/new-note/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -26,7 +24,7 @@ def new_note(id):
         content = form.content.data
         new_note = Note(title = form.title.data, content=content, category_id = category.id)
         new_note.save_note()
-        return redirect(url_for('.category', id=category.id))
+        return redirect(url_for('.categories',id=category.id))
 
     return render_template('new_note.html', note_form=form, category=category)
 
@@ -67,16 +65,17 @@ def categories(id):
     # notes = Note.query.order_by(Note.time.desc()).all()
     return render_template('category.html', notes=notes, category=category)
 
-@main.route('/add/category', methods=['GET', 'POST'])
+@main.route('/<uname>/add/category', methods=['GET', 'POST'])
 @login_required
-def new_category():
+def new_category(uname):
+    user = User.query.filter_by(username = uname).first()
     form = CategoryForm()
     if form.validate_on_submit():
         name = form.name.data
         new_category = Category(name = name)
-        new_category.save_category()
+        new_category.save_categories()
 
-        return redirect(url_for('.index'))
+        return redirect(url_for('.profile',uname=user.username))
     title = 'New Category'
     return render_template('new_category.html', category_form = form, title = title)
 
