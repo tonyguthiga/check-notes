@@ -2,9 +2,13 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block content %}
-<div class="container">
+<div class="container-fluid forms" style="text-align: center;">
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 create-group">{{ wtf.quick_form(category_form) }}</div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4 styler">
+        {{ wtf.quick_form(category_form) }}
+    </div>
+    <div class="col-md-4"></div>
     </div>
 </div>
 {% endblock %}

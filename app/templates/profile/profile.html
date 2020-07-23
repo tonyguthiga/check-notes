@@ -3,7 +3,7 @@
 {% import 'macros.html' as macro %}
 
 {% block content %}
-<div class="container">
+<div class="container-fluid">
 <div class="row">
 <!-- displaying  Username-->
   <div class="col-md-6">
@@ -24,12 +24,12 @@
     <div class="text-align-center text-center">
         <div>
             <h4>
-                <a class="btn btn-primary" href="/{{user.username}}/add/category">
+                <a class="btn btn-success" href="/{{user.username}}/add/category">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Category</a>
             </h4>
-            <ol class="category-list list-inline-item">
+            <ul class="category-list list-inline-item">
                 {{macro.displayCategorylist(categories)}}
-            </ol>
+            </ul>
             <div>
               <h2>All Notes</h2>
               {{macro.displayNotes(notes)}}
