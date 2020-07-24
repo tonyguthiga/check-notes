@@ -1,9 +1,10 @@
+  body {
+  font-family: 'Grenze Gotisch', cursive;
+  font-size: 2em;
+}
 .home{
   height: 100vh;
-  background-image: url("../static/images/bg-3.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  margin-right: 100px;
 }
 .forms{
   height: 100vh;
@@ -30,4 +31,21 @@
 }
 .styler {
   margin-top: 130px;
+}
+.text1 {
+  color: grey;
+  font-family: 'Ranchers', cursive;
+  line-height: 1.5em;
+}
+.text2 {
+  color: limegreen;
+  font-family: 'Ranchers', cursive;
+  line-height: 1.5em;
+}
+.prof {
+  background-color: rgb(221, 221, 221);
+  
+}
+.cat-title {
+  color: grey;
 }

@@ -2,15 +2,21 @@
 {% import 'macros.html' as macro %}
 
 {% block content %}
-<h4>
-    <a class="btn btn-success" href="/category/new-note/{{category.id}}">
-    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Note</a>
-</h4>
-<div class="col-md-10-offset-1 col-sm-12">
-    <h3 class="text-center">{{ category.name|upper }}</h3>
-</div>
-<div>
-    <h2>All Notes</h2>
-    {{macro.displayNotes(notes)}}
+  <div class="container-fluid prof">
+      <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">
+            <h4>
+            <a class="btn btn-success" href="/category/new-note/{{category.id}}">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Note</a>
+        </h4> 
+          </div>
+          <div class="col-md-7">
+            <h3 class="text-center">{{ category.name|upper }}</h3>
+            <hr>
+            {{macro.displayNotes(notes)}}
+          </div>
+          <div class="col-md-1"></div>
+      </div>
   </div>
 {% endblock %}
