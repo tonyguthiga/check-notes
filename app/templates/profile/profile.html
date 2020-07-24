@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% import 'macros.html' as macro %}
+
+{% block content %}
+<div class="container-fluid prof">
+  <div class="row">
+    <div class="col-md-4">
+      <h1> Hello, {{user.username| capitalize}} </h1>
+
+      <!--Displaying user bio-->
+       {% if user.bio %}
+         <h3> {{user.bio}}</h3>
+      {%else%}
+         <h2> {{user.username| capitalize}} has no bio </h2>
+      {% endif %}
+      {% if user == current_user %}
+      <a href="{{url_for('main.update_profile',uname=user.username)}}" class="btn btn-success">Edit profile</a>
+      {% endif %}
+    </div>
+    <div class="col-md-6">
+      <div class="text-align-center text-center">
+        
+            <h4>
+                <a class="btn btn-success" href="/{{user.username}}/add/category">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Category</a>
+            </h4>
+            <ul class="category-list list-inline-item">
+                {{macro.displayCategorylist(categories)}}
+            </ul>
+           
+              {{macro.displayNotes(notes)}}
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+{% endblock %}

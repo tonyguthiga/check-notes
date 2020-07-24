@@ -1,0 +1,15 @@
+{% macro displayCategorylist(category_list) %}
+{% for category in category_list %}
+<h2><a href="{{url_for('.categories',id=category.id)}}" class="cat-title">{{category.name|upper}}</a></h2>
+{% endfor %}
+{% endmacro %}
+
+{% macro displayNotes(notes_list) %}
+{% for note in notes_list %}
+ <h2>{{ note.title }}</h2> 
+ <p>{{ note.content }}</p>
+ <p>({{ note.time.strftime('%B-%d-%y/%H:%m') }})</p>
+ <hr>
+
+{% endfor %}
+{% endmacro %}

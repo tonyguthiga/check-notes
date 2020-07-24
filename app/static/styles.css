@@ -1,0 +1,51 @@
+  body {
+  font-family: 'Grenze Gotisch', cursive;
+  font-size: 2em;
+}
+.home{
+  height: 100vh;
+  margin-right: 100px;
+}
+.forms{
+  height: 100vh;
+  background-image: url("../static/images/bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.naming {
+  font-size: 2em;
+  color: rgb(14, 255, 14);
+  font-family: 'Ranchers', cursive;
+}
+.naming:hover {
+  font-size: 1.5em;
+  color: black;
+}
+.note {
+ color: rgba(0,0,0,0.6);
+}
+.note:hover {
+ color: black;
+}
+.styler {
+  margin-top: 130px;
+}
+.text1 {
+  color: grey;
+  font-family: 'Ranchers', cursive;
+  line-height: 1.5em;
+}
+.text2 {
+  color: limegreen;
+  font-family: 'Ranchers', cursive;
+  line-height: 1.5em;
+}
+.prof {
+  background-color: rgb(221, 221, 221);
+  height: 100vh;
+}
+.cat-title {
+  color: grey;
+}

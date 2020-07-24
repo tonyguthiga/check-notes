@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro%}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-12">
+       <p class="text-left"><a class="btn btn-info" href="{{url_for('.new_notes',id=notes.category_id)}}">Post A Note</a></p>
+       <div class="well" style="background-color:#d0d1cb">
+         <h3>{{notes.content}}</h3>
+       </div>
+    </div>
+</div>
+{% endblock %}

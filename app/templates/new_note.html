@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content %}
+<div class="container-fluid forms" style="text-align: center;">
+    <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 styler">
+        <h3>{{ category.name|upper }} Note</h3>
+        {{wtf.quick_form(note_form)}}
+    </div>
+    <div class="col-md-4"></div>
+    </div>
+</div>
+
+{% endblock %}
